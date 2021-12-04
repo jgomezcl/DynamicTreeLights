@@ -3,4 +3,4 @@ Custom tree lights that react to changes in the environment lighting. Once a cha
 
 This project was inspired by CONSTELLACTION, an installation created by panGenerator for Copernicus Science Centre / Przemiany Festiwal 2013 (https://vimeo.com/76479685).
 
-The PCBs are built around an Attiny84 microcontroller and require an ICSP to be programmed. In my case, I used an Arduino Nano with the sketch ArduinoISP.ino that can be found on the examples.
+The PCBs are built around an Attiny84 microcontroller and require an ICSP to be programmed. I used an Arduino Nano with the sketch ArduinoISP.ino that can be found on the examples of the Arduino IDE.
