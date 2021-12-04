@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name SnowStar)(type Legacy)(uri ${KIPRJMOD}/SnowStar.lib)(options "")(descr ""))
+  (lib (name Albufera_IL)(type Legacy)(uri ${KIPRJMOD}/Albufera_IL.lib)(options "")(descr ""))
+)

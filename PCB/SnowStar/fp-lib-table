@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name SnowStar)(type KiCad)(uri ${KIPRJMOD}/SnowStar.pretty)(options "")(descr ""))
+)
