@@ -2,7 +2,7 @@
 /* DynamicTreeLights.ino
 
     04/12/2021
-    Programed on an Attiny84
+    Tested on an Attiny84
     The internal clock must be set to 8 MHz
 */
 
@@ -26,6 +26,9 @@
 #define LSENSOR_2 A0
 #define LSENSOR_3 A2
 
+#define SPONTANEOUS_TRIGGER       // Comment this line to avoid spontaneous blinks
+#define PROBABILITY 20            // Probability of a spontaneous blink will be 1 divided by this number
+#define SPONTANEOUS_PERIOD 10000  // Spontaneus probability will be checked with this periodicity (in ms)
 
 //#define DEBUG   // To adjust the algorithm on a UNO
 
@@ -40,6 +43,10 @@ circularBuffer buf1, buf2, buf3;
 unsigned long lastUpdate = 0;
 
 WS2812 LEDS(LED_NUM);
+
+#ifdef SPONTANEOUS_TRIGGER
+uint16_t spontaneousCnt = 0;
+#endif
 
 void setup()
 {
@@ -93,6 +100,20 @@ void loop()
       else if (newValue3 < getMean(&buf3) - SENS_TRESHOLD)
       {
         delayedBlink();
+      }
+      else
+      {
+#ifdef SPONTANEOUS_TRIGGER
+        spontaneousCnt++;
+        if (spontaneousCnt >= SPONTANEOUS_PERIOD / UPDATE_PERIOD)
+        {
+          spontaneousCnt = 0;
+          if (random(0, PROBABILITY) <= 0)
+          {
+            delayedBlink();
+          }
+        }
+#endif
       }
     }
   }
